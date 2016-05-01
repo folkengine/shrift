@@ -1,6 +1,7 @@
 module Example
   class Character
-    attr_reader :character_name, :strength, :dexterity, :constitution, :wisdom, :intelligence, :charisma
+    attr_reader :character_name, :strength, :dexterity,
+                :constitution, :wisdom, :intelligence, :charisma
 
     def initialize(character_name)
       @character_name = character_name

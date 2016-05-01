@@ -7,22 +7,21 @@ require_relative('examples/character')
 class TestShriftMap < Minitest::Test
   include Shrift
 
-  def test_default
-    default_value = 10
-    shrift_map = ShriftMap.new('', default_value)
-    assert_equal(shrift_map.default, default_value)
+  def setup
+    @shrift_map = ShriftMap.new({ch: 'charisma', dx: 'dexterity'})
   end
 
-  def test_first_form
+  def test_new
+    assert_equal @shrift_map.fetch(:ch), 'charisma'
+    assert_equal @shrift_map.fetch(:dx), 'dexterity'
+  end
 
-    shrift_map = ShriftMap.new('')
-    shrift_map.add({s: 'strength'})
+  def test_store
+    @shrift_map.store(:s, 'strength')
+    @shrift_map.store(:st, 'strength')
+    assert_equal @shrift_map.fetch(:s), 'strength'
+    assert_equal @shrift_map.fetch(:st), 'strength'
 
-    first = ['Character', {foo: 20, bar: 10}, 20, 4010, Example::Character]
-
-    dump = Psych.dump(first)
-    puts dump
-
-    assert true
+    # first = ['Character', {foo: 20, bar: 10}, 20, 4010, Example::Character]
   end
 end
