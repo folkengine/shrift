@@ -1,2 +1,2 @@
-class ShriftException
+class ShriftException < Exception
 end

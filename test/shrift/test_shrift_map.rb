@@ -1,27 +1,33 @@
-require 'psych'
 require 'shrift'
 
 require_relative('../test_helper')
-require_relative('examples/character')
 
 class TestShriftMap < Minitest::Test
   include Shrift
 
   def setup
-    @shrift_map = ShriftMap.new({ch: 'charisma', dx: 'dexterity'})
+    @shrift_map_string = 's15ch20dx19'
+    @shrift_map = ShriftMap.new(@shrift_map_string)
   end
 
   def test_new
-    assert_equal @shrift_map.fetch(:ch), 'charisma'
-    assert_equal @shrift_map.fetch(:dx), 'dexterity'
+    assert_equal 15, @shrift_map.fetch(:s)
+    assert_equal 20, @shrift_map.fetch(:ch)
+    assert_equal 19, @shrift_map.fetch(:dx)
   end
 
-  def test_store
-    @shrift_map.store(:s, 'strength')
-    @shrift_map.store(:st, 'strength')
-    assert_equal @shrift_map.fetch(:s), 'strength'
-    assert_equal @shrift_map.fetch(:st), 'strength'
+  def test_invalid
+    shrift_map_string = 's15ch20dx'
+    assert_raises(ShriftException) {ShriftMap.new(shrift_map_string)}
+  end
 
-    # first = ['Character', {foo: 20, bar: 10}, 20, 4010, Example::Character]
+  def test_to_s
+    assert_equal @shrift_map.to_s, @shrift_map_string
+  end
+
+  def test_to_shrift_map
+    hash = {s: 16, ch: 16}
+    shrift_map = ShriftMap::to_shrift_map(hash)
+    assert_equal hash, shrift_map.map
   end
 end
