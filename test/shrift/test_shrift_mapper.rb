@@ -7,7 +7,7 @@ class TestShriftMapper < Minitest::Test
   include Shrift
 
   def setup
-    @shrift_mapper = ShriftMapper.new(map: {'st': 'strength', 's': 'strength', ch: 'charisma', dx: 'dexterity'})
+    @shrift_mapper = ShriftMapper.new(map: {'st' => 'strength', 's' => 'strength', ch: 'charisma', dx: 'dexterity'})
     @shrift_map_string = 's15ch20dx19'
   end
 
