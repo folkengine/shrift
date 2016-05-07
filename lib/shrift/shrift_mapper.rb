@@ -1,0 +1,2 @@
+class ShriftMapper
+end
