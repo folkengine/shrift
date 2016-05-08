@@ -1,8 +1,13 @@
 require_relative 'shrift_exception'
 
 module Shrift
+  # A String that alternates between characters and numbers. Short hand for a collection
+  # of variables that hold integer values.
+  #
+  # Shrift map keys are uppercase.
+  #
   class ShriftMap
-    attr_accessor :hashmap, :shrift_map_string
+    attr_reader :hashmap, :shrift_map_string
 
     def initialize(shrift_map_string)
       @shrift_map_string = shrift_map_string
@@ -31,7 +36,7 @@ module Shrift
     end
 
     def self.to_shrift_map_string(hash)
-      shrift_map_string = ""
+      shrift_map_string = ''
       hash.each do |key, val|
         shrift_map_string << key.to_s
         shrift_map_string << val.to_s
@@ -42,14 +47,14 @@ module Shrift
     private
 
     def split(shrift_map_string)
-      while !shrift_map_string.empty?
-        shrift_group = shrift_map_string.scan(/^([a-zA-Z]+)(\d+)(.*)/)
+      until shrift_map_string.empty?
+        shrift_group = shrift_map_string.scan(/^([a-zA-Z]+)(\d+)(.*)/).first
         begin
-          store(shrift_group[0][0], shrift_group[0][1])
+          store(shrift_group[0], shrift_group[1])
         rescue NoMethodError
           raise ShriftException, "Unbalanced ShriftMap: #{@shrift_map_string}"
         end
-        shrift_map_string = shrift_group[0][2]
+        shrift_map_string = shrift_group[2]
       end
     end
   end

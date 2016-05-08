@@ -18,7 +18,7 @@ class TestShriftMap < Minitest::Test
 
   def test_invalid
     shrift_map_string = 's15ch20dx'
-    assert_raises(ShriftException) {ShriftMap.new(shrift_map_string)}
+    assert_raises(ShriftException) { ShriftMap.new(shrift_map_string) }
   end
 
   def test_to_s
@@ -27,7 +27,7 @@ class TestShriftMap < Minitest::Test
 
   def test_to_shrift_map
     hash = {S: 16, CH: 16}
-    shrift_map = ShriftMap::to_shrift_map(hash)
+    shrift_map = ShriftMap.to_shrift_map(hash)
     assert_equal hash, shrift_map.hashmap
   end
 end

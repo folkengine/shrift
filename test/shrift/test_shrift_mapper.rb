@@ -26,4 +26,13 @@ class TestShriftMapper < Minitest::Test
     assert_equal mappie['charisma'], shrift_map.fetch(:CH)
     assert_equal mappie['dexterity'], shrift_map.fetch(:DX)
   end
+
+  def test_to_shrift_map
+    mappie = {'strength' => 19, 'charisma' => 15, 'dexterity' => 9}
+    shrift_map = @shrift_mapper.to_shrift_map(mappie)
+    assert_equal shrift_map.fetch(:st), mappie['strength']
+    assert_equal shrift_map.fetch(:ST), mappie['strength']
+    assert_equal shrift_map.fetch(:CH), mappie['charisma']
+    assert_equal shrift_map.fetch(:dx), mappie['dexterity']
+  end
 end

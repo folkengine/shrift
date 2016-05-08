@@ -1,12 +1,12 @@
 require_relative 'shrift_map'
 
 module Shrift
+  # I map ShriftMaps
   class ShriftMapper
-    attr_accessor :hashmap
+    attr_reader :hashmap
 
-    def initialize(hashmap: {}, strict: false)
+    def initialize(hashmap: {})
       @hashmap = hashmap
-      @strict = strict
       clean
     end
 
@@ -30,20 +30,25 @@ module Shrift
       @hashmap
     end
 
+    # Disable :reek:FeatureEnvy
     def to_shrift_string(mappie)
-      s = ''
+      shrift_string = ''
       mappie.each do |key, val|
-        s << @hashmap.key(key).to_s
-        s << val.to_s
+        shrift_string << @hashmap.key(key).to_s
+        shrift_string << val.to_s
       end
-      s
+      shrift_string
+    end
+
+    def to_shrift_map(mappie)
+      ShriftMap.new(to_shrift_string(mappie))
     end
 
     private
 
     # Convert Hash keys to symbols
     def clean
-      @hashmap = Hash[@hashmap.map { |k, v| [k.upcase.to_sym, v] }]
+      @hashmap = Hash[@hashmap.map { |key, value| [key.upcase.to_sym, value] }]
     end
   end
 end
