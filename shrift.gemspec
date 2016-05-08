@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'shrift/version'
+require 'shrift/shrift_version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'shrift'
-  spec.version       = Shrift::VERSION
+  spec.version       = ShriftVersion::VERSION
   spec.authors       = ['Folkengine']
   spec.email         = ['gaoler@electronicpanopticon.com']
 
-  spec.summary       = 'WORK IN PROGRESS - Ruby utility library to make short shrift of objects.'
+  spec.summary       = 'Ruby utility library to make short shrift of objects.'
   spec.description   = 'Custom object serializer DSL'
   spec.homepage      = 'https://github.com/folkengine/shrift'
 

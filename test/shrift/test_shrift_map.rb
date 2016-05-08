@@ -3,8 +3,6 @@ require 'shrift'
 require_relative('../test_helper')
 
 class TestShriftMap < Minitest::Test
-  include Shrift
-
   def setup
     @shrift_map_string = 's15ch20dx19'
     @shrift_map = ShriftMap.new(@shrift_map_string)
