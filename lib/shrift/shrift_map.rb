@@ -2,24 +2,24 @@ require_relative 'shrift_exception'
 
 module Shrift
   class ShriftMap
-    attr_accessor :map, :shrift_map_string
+    attr_accessor :hashmap, :shrift_map_string
 
     def initialize(shrift_map_string)
       @shrift_map_string = shrift_map_string
-      @map = {}
+      @hashmap = {}
       split(shrift_map_string)
     end
 
     def fetch(key)
-      @map[key.to_sym].to_i
+      @hashmap[key.upcase.to_sym].to_i
     end
 
     def store(key, value)
-      @map[key.to_sym] = value.to_i
+      @hashmap[key.upcase.to_sym] = value.to_i
     end
 
     def to_hash
-      @map
+      @hashmap
     end
 
     def to_s
@@ -27,19 +27,23 @@ module Shrift
     end
 
     def self.to_shrift_map(hash)
+      ShriftMap.new(ShriftMap.to_shrift_map_string(hash))
+    end
+
+    def self.to_shrift_map_string(hash)
       shrift_map_string = ""
       hash.each do |key, val|
         shrift_map_string << key.to_s
         shrift_map_string << val.to_s
       end
-      ShriftMap.new(shrift_map_string)
+      shrift_map_string
     end
 
     private
 
     def split(shrift_map_string)
       while !shrift_map_string.empty?
-        shrift_group = shrift_map_string.scan(/^([a-z]+)(\d+)(.*)/)
+        shrift_group = shrift_map_string.scan(/^([a-zA-Z]+)(\d+)(.*)/)
         begin
           store(shrift_group[0][0], shrift_group[0][1])
         rescue NoMethodError
