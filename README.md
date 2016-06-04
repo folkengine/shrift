@@ -1,5 +1,6 @@
 # Shrift
 
+[![Gem Version](https://badge.fury.io/rb/shrift.svg)](https://badge.fury.io/rb/shrift)
 [![Build Status](https://travis-ci.org/folkengine/shrift.svg?branch=master)](https://travis-ci.org/folkengine/shrift)
 
 Makes short shrift of objects. 
