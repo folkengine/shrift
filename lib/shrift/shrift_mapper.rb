@@ -10,7 +10,7 @@ class ShriftMapper
   end
 
   def fetch(key)
-    @hashmap[key.upcase.to_sym]
+    @hashmap[key.downcase.to_sym]
   end
 
   def store(key, value)
@@ -29,24 +29,33 @@ class ShriftMapper
     @hashmap
   end
 
-  # Disable :reek:FeatureEnvy
+  # :reek:UncommunicativeVariableName :reek:FeatureEnvy
   def to_shrift_string(mappie)
-    shrift_string = ''
-    mappie.each do |key, val|
-      shrift_string << @hashmap.key(key).to_s
-      shrift_string << val.to_s
-    end
-    shrift_string
+    return mappie if mappie.is_a?(String)
+    return mappie.map { |k, v| @hashmap.key(k).to_s.downcase + v.to_s }.join if mappie.is_a?(Hash)
+    @hashmap.map { |k, v| k.to_s.downcase + mappie.send(v).to_s }.join
   end
 
   def to_shrift_map(mappie)
     ShriftMap.new(to_shrift_string(mappie))
   end
 
+  # Shrift Cell Methods
+
+  def process(target)
+    to_shrift_string(target)
+  end
+
+  # :reek:UncommunicativeVariableName
+  def set(value, target)
+    shrift_map = to_shrift_map(value)
+    @hashmap.map { |k, v| target.send("#{v}=", shrift_map.fetch(k)) }
+  end
+
   private
 
   # Convert Hash keys to symbols
   def clean
-    @hashmap = Hash[@hashmap.map { |key, value| [key.upcase.to_sym, value] }]
+    @hashmap = Hash[@hashmap.map { |key, value| [key.downcase.to_sym, value] }]
   end
 end

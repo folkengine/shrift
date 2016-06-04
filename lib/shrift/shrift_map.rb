@@ -3,7 +3,7 @@ require_relative 'shrift_exception'
 # A String that alternates between characters and numbers. Short hand for a collection
 # of variables that hold integer values.
 #
-# Shrift map keys are uppercase.
+# Shrift map keys are lowercase.
 #
 class ShriftMap
   attr_reader :hashmap, :shrift_map_string
@@ -15,11 +15,11 @@ class ShriftMap
   end
 
   def fetch(key)
-    @hashmap[key.upcase.to_sym].to_i
+    @hashmap[key.downcase.to_sym].to_i
   end
 
   def store(key, value)
-    @hashmap[key.upcase.to_sym] = value.to_i
+    @hashmap[key.downcase.to_sym] = value.to_i
   end
 
   def to_hash

@@ -24,7 +24,7 @@ class TestShriftMap < Minitest::Test
   end
 
   def test_to_shrift_map
-    hash = {S: 16, CH: 16}
+    hash = {s: 16, ch: 16}
     shrift_map = ShriftMap.to_shrift_map(hash)
     assert_equal hash, shrift_map.hashmap
   end

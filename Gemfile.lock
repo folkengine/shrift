@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    shrift (0.0.0)
+    shrift (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -50,6 +50,7 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
+    yamlable (0.0.2)
 
 PLATFORMS
   ruby
@@ -62,6 +63,7 @@ DEPENDENCIES
   reek
   rubocop
   shrift!
+  yamlable
 
 BUNDLED WITH
    1.12.3

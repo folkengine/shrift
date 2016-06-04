@@ -15,3 +15,9 @@ Style/SpaceInsideHashLiteralBraces:
   SupportedStyles:
     - space
     - no_space
+
+Style/IndentHash:
+  Enabled: false
+
+Style/MethodLength:
+  Enabled: false

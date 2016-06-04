@@ -8,4 +8,5 @@ group :development do
   gem 'minitest-reporters'
   gem 'reek'
   gem 'rubocop'
+  gem 'yamlable'
 end
