@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = 'Ruby utility library to make short shrift of objects.'
   spec.description   = 'Custom object serializer DSL'
   spec.homepage      = 'https://github.com/folkengine/shrift'
+  spec.licenses      = ['MIT']
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'
