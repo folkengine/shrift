@@ -11,6 +11,18 @@ This is alpha software and only works with basic Objects.
 
 Shrift is a simple DSL generator that turns Objects to single line Strings for easy storage and debugging. 
 
+An example 'Shrift String' would be:
+
+    example:st15dx14cn10w18i3ch6:4
+
+When you split the String on ':', this first cell is a String, the second cell is a 'Shrift Map' of alternating
+field shorthand Strings and integers, and the third cell maps to an integer. 
+
+Pass this String back into the Shrift object configured to make short shrift of the class and it will return the Object,
+good as new.
+
+I created this so that I had a way to pack as much informational punch into as short a space as possible.
+
 ## Installation
 
 Add this line to your application's Gemfile:

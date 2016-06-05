@@ -5,7 +5,7 @@ require_relative('examples/character')
 
 class TestShriftMapper < Minitest::Test
   def setup
-    @shrift_mapper = ShriftMapper.new(hashmap: {'ST' => 'strength', CH: 'charisma', DX: 'dexterity'})
+    @shrift_mapper = ShriftMapper.new(schema: {'ST' => 'strength', CH: 'charisma', DX: 'dexterity'})
     @shrift_map_string = 'ST15CH20DX19'
   end
 

@@ -8,7 +8,7 @@ class TestShrift < Minitest::Test
   include Example
 
   def setup
-    @shrift_mapper = ShriftMapper.new(hashmap: {
+    @shrift_mapper = ShriftMapper.new(schema: {
         ST: 'strength',
         DX: 'dexterity',
         CN: 'constitution',

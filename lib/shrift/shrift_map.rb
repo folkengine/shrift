@@ -6,24 +6,24 @@ require_relative 'shrift_exception'
 # Shrift map keys are lowercase.
 #
 class ShriftMap
-  attr_reader :hashmap, :shrift_map_string
+  attr_reader :schema, :shrift_map_string
 
   def initialize(shrift_map_string)
     @shrift_map_string = shrift_map_string
-    @hashmap = {}
+    @schema = {}
     split(shrift_map_string)
   end
 
   def fetch(key)
-    @hashmap[key.downcase.to_sym].to_i
+    @schema[key.downcase.to_sym].to_i
   end
 
   def store(key, value)
-    @hashmap[key.downcase.to_sym] = value.to_i
+    @schema[key.downcase.to_sym] = value.to_i
   end
 
   def to_hash
-    @hashmap
+    @schema
   end
 
   def to_s
