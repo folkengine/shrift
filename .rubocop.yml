@@ -19,5 +19,5 @@ Style/SpaceInsideHashLiteralBraces:
 Style/IndentHash:
   Enabled: false
 
-Style/MethodLength:
+Metrics/MethodLength:
   Enabled: false

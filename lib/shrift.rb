@@ -1,4 +1,5 @@
 require 'shrift/shrift_cell'
+require 'shrift/shrift_factory'
 require 'shrift/shrift_int'
 require 'shrift/shrift_map'
 require 'shrift/shrift_mapper'

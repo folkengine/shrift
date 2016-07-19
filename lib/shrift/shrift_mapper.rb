@@ -18,11 +18,7 @@ class ShriftMapper
   end
 
   def parse(shrift_map_string)
-    hash = {}
-    ShriftMap.new(shrift_map_string).schema.each do |key, val|
-      hash[@schema[key]] = val
-    end
-    hash
+    Hash[ShriftMap.new(shrift_map_string).schema.map { |key, val| [@schema[key], val] }]
   end
 
   def to_hash
