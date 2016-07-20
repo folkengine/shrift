@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    shrift (0.0.4)
+    shrift (0.0.5)
 
 GEM
   remote: https://rubygems.org/
@@ -66,4 +66,4 @@ DEPENDENCIES
   yamlable
 
 BUNDLED WITH
-   1.12.3
+   1.12.5

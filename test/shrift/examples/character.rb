@@ -24,5 +24,9 @@ module Example
         (intelligence == other.intelligence) &&
         (charisma == other.charisma)
     end
+
+    def self.factory
+      Character.new("Character#{rand(10_000)}")
+    end
   end
 end

@@ -35,12 +35,7 @@ class ShriftMap
   end
 
   def self.to_shrift_map_string(hash)
-    shrift_map_string = ''
-    hash.each do |key, val|
-      shrift_map_string << key.to_s
-      shrift_map_string << val.to_s
-    end
-    shrift_map_string
+    hash.map { |key, val| "#{key}#{val}" }.join
   end
 
   private
