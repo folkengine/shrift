@@ -5,7 +5,7 @@ require_relative('examples/character')
 
 class TestShriftMapper < Minitest::Test
   def setup
-    @shrift_mapper = ShriftMapper.new(schema: {'ST' => 'strength', CH: 'charisma', DX: 'dexterity'})
+    @shrift_mapper = ShriftMapper.new(schema: {'ST' => 'strength', CH: 'charisma', DX: 'dexterity'}, default_value: 10)
     @shrift_map_string = 'ST15CH20DX19'
   end
 
@@ -32,5 +32,11 @@ class TestShriftMapper < Minitest::Test
     assert_equal shrift_map.fetch(:ST), mappie['strength']
     assert_equal shrift_map.fetch(:CH), mappie['charisma']
     assert_equal shrift_map.fetch(:dx), mappie['dexterity']
+  end
+
+  def test_default_value
+    mappie = {'strength' => 19, 'charisma' => 15}
+    aligned_mappie = @shrift_mapper.align(mappie)
+    assert_equal 10, aligned_mappie['dexterity']
   end
 end

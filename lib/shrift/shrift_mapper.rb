@@ -2,10 +2,11 @@ require_relative 'shrift_map'
 
 # I map ShriftMaps
 class ShriftMapper
-  attr_reader :schema
+  attr_reader :default_value, :schema
 
-  def initialize(schema: {})
+  def initialize(schema: {}, default_value: 0)
     @schema = schema
+    @default_value = default_value
     clean
   end
 
@@ -19,6 +20,10 @@ class ShriftMapper
 
   def parse(shrift_map_string)
     Hash[ShriftMap.new(shrift_map_string).schema.map { |key, val| [@schema[key], val] }]
+  end
+
+  def align(hash)
+    Hash[@schema.map { |key, val| [@schema[key], hash[val] ||= default_value] }]
   end
 
   def to_hash
