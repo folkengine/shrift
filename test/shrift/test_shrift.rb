@@ -14,7 +14,8 @@ class TestShrift < Minitest::Test
         CN: 'constitution',
         W: 'wisdom',
         I: 'intelligence',
-        CH: 'charisma'})
+        CH: 'charisma'
+    })
 
     @shrift = Shrift.new(Character, [ShriftCell.new(:character_name), @shrift_mapper, ShriftInt.new(:hit_points)])
 

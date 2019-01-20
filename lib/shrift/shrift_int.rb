@@ -7,6 +7,6 @@ class ShriftInt < ShriftCell
   end
 
   def set(value, target)
-    target.send("#{@field}=", value.to_i)
+    target.send("#{field}=", value.to_i)
   end
 end

@@ -24,6 +24,7 @@ module Example
         (intelligence == other.intelligence) &&
         (charisma == other.charisma)
     end
+    # rubocop:enable Style/CyclomaticComplexity
 
     def self.factory
       Character.new("Character#{rand(10_000)}")
