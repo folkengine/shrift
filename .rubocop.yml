@@ -9,14 +9,14 @@ Metrics/LineLength:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#80-character-limits'
   Enabled: false
 
-Style/SpaceInsideHashLiteralBraces:
+Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
   EnforcedStyleForEmptyBraces: no_space
   SupportedStyles:
     - space
     - no_space
 
-Style/IndentHash:
+Layout/IndentHash:
   Enabled: false
 
 Metrics/MethodLength:

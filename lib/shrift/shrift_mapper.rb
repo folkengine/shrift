@@ -28,7 +28,9 @@ class ShriftMapper
   # :reek:UncommunicativeVariableName :reek:FeatureEnvy
   def to_shrift_string(mappie)
     return mappie if mappie.is_a?(String)
+
     return mappie.map { |k, v| @schema.key(k).to_s.downcase + v.to_s }.join if mappie.is_a?(Hash)
+
     @schema.map { |k, v| k.to_s.downcase + mappie.send(v).to_s }.join
   end
 
